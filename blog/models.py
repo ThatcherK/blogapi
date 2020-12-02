@@ -9,7 +9,7 @@ class Blog(models.Model):
     body = models.CharField(max_length=400)
     picture = models.ImageField(blank=True, null=True, upload_to="images/")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    likes = models.ManyToManyField(User, related_name='blog_posts')
+    likes = models.ManyToManyField(User, related_name='blog_posts', blank=True)
     created_date = models.DateTimeField( default=timezone.now)
 
     def __str__(self):

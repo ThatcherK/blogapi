@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Blog
+from .models import Blog, Comment
 from rest_framework import fields,serializers
 
 class BlogSerializer(ModelSerializer):
@@ -8,4 +8,8 @@ class BlogSerializer(ModelSerializer):
         model=Blog
         fields=['title', 'body', 'picture', 'user', 'likes', 'created_date']
 
+class CommentSerializer(ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ['blog','author', 'comment', 'created_date']
 

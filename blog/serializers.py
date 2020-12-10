@@ -8,7 +8,7 @@ class BlogSerializer(ModelSerializer):
     
     class Meta:
         model=Blog
-        fields=['title', 'body', 'picture', 'user', 'likes', 'created_date']
+        fields=['title', 'body', 'picture', 'user', 'likes', 'created_date', 'id']
 
 class CommentSerializer(ModelSerializer):
     class Meta:

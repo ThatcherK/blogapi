@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+
 class Blog(models.Model):
     title = models.CharField(max_length=200)
     body = models.CharField(max_length=400)
@@ -20,7 +21,7 @@ class Blog(models.Model):
 
 class Comment(models.Model):
     author = models.ManyToManyField(User)
-    blog = models.ManyToManyField(Blog)
+    blog = models.ManyToManyField(Blog, related_name="comments")
     comment = models.CharField(max_length=200)
     created_date = models.DateTimeField(default=timezone.now)
 

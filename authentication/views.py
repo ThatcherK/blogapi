@@ -16,18 +16,4 @@ class RegisterView(GenericAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class LoginView(GenericAPIView):
-    serializer_class = LoginSerializer
-    def post(self, request):
-        data = request.data
-        username = data.get('username', '')
-        password = data.get('password', '')
-        user = auth.authenticate(username=username, password=password)
-        if user:
-            serializer = UserSerializer(user)
-            data = {
-                'user':serializer.data,
-            }
-            return Response(data, status=status.HTTP_200_OK)
 
-        return Response({'detail':'Invalid credentials'},status=status.HTTP_401_UNAUTHORIZED)
